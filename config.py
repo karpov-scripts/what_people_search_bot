@@ -8,5 +8,5 @@ load_dotenv('.env')
 
 bot_token = os.getenv('BOT_TOKEN')
 admin_id = os.getenv('ADMIN_ID')
-news_message_period = 86400
+newsletter_period = 86400
 news_time = time(21, 00, 00)

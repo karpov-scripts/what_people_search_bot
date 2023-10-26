@@ -15,10 +15,24 @@ class Database:
         with self.connection:
             return self.cursor.execute("INSERT INTO users (user_id) VALUES (?)", (user_id,))
 
-    def set_active(self, user_id, active):
+    def set_user_active(self, user_id, active):
         return self.cursor.execute("UPDATE users SET active = ? WHERE user_id = ?", (active, user_id,))
 
     def get_users(self):
         with self.connection:
             return self.cursor.execute("SELECT user_id, active FROM users").fetchall()
 
+    def add_news(self, title, traffic, description, link):
+        with self.connection:
+            return self.cursor.execute(
+                "INSERT INTO actual_news (title, traffic, description, link) VALUES (?, ?, ?, ?)",
+                (title, traffic, description, link)
+            )
+
+    def get_all_news(self):
+        with self.connection:
+            return self.cursor.execute("SELECT * FROM actual_news").fetchall()
+
+    def delete_all_news(self):
+        with self.connection:
+            return self.cursor.execute("DELETE FROM actual_news")
