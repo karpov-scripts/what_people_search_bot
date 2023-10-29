@@ -30,7 +30,7 @@ def get_news_description(all_news_description, all_news, news_index):
 
 
 def get_news_link(news_description):
-    search = news_description.replace(' ', '_').replace('«', '').replace('»', '').replace('&quot;', '')
+    search = news_description.replace(' ', '_').replace('«', '').replace('»', '').replace('&quot;', '').replace('\u200b', '')
     return f'https://www.google.com/search?q={search}'
 
 
